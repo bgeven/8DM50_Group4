@@ -23,7 +23,7 @@ def eucledian_distance(X_test, X_train):
             euclidean_matrix = np.array([euclidean_distances]) # create the euclidean distance matrix
     return euclidean_matrix 
 
-def kNN_prediction(euclidean_matrix, y_train, y_test, K, good_pred_list):
+def kNN_prediction_classification(euclidean_matrix, y_train, y_test, K, good_pred_list):
     good_pred = 0
     for i in range(len(euclidean_matrix)): # Iterate over the rows in the matix, each row consisting of all distances 
         row = euclidean_matrix[i]
@@ -39,3 +39,16 @@ def kNN_prediction(euclidean_matrix, y_train, y_test, K, good_pred_list):
     good_pred_list.append(rate_good_pred)
     print('Calculation done for K =', K)
     return good_pred_list
+
+def kNN_prediction_regression(euclidean_matrix, y_train, y_test, K, good_pred_list):
+    y_pred_list=[]
+    for i in range(len(euclidean_matrix)): # Iterate over the rows in the matix, each row consisting of all distances 
+        row = euclidean_matrix[i]
+        indices_k_closest = sorted(range(len(row)), key = lambda sub: row[sub])[:K] # List of the indices of the K closest vectors
+        targets_list = [] # List for the targets of these closest vectors
+        for index in indices_k_closest:
+            targets_list.append(y_train[index])   
+        y_pred=sum(targets_list)/len(targets_list)# The predicted target is the mean target among the closest vectors
+        y_pred_list.append(y_pred)
+    return y_pred_list
+        
