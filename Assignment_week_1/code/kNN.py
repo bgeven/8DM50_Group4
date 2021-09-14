@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 10 11:26:10 2021
+#Code for the k-NN classification and k-NN regression
+#Group: 4, Course: 8DM50
 
-@author: 20181742
-"""
 import numpy as np
 
 def eucledian_distance(X_test, X_train):
