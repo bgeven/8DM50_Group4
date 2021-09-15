@@ -37,7 +37,7 @@ def kNN_prediction_classification(euclidean_matrix, y_train, y_test, K, good_pre
     print('Calculation done for K =', K)
     return good_pred_list
 
-def kNN_prediction_regression(euclidean_matrix, y_train, y_test, K, good_pred_list):
+def kNN_prediction_regression(euclidean_matrix, y_train, y_test, K):
     y_pred_list=[]
     for i in range(len(euclidean_matrix)): # Iterate over the rows in the matix, each row consisting of all distances 
         row = euclidean_matrix[i]
